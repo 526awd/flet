@@ -8,6 +8,7 @@ import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.mohamedrejeb.richeditor.model.RichTextState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
@@ -22,8 +23,8 @@ class NoteEditViewModel(application: Application) : AndroidViewModel(application
     var categoryValue by mutableStateOf("未分类")
     var lastModified by mutableStateOf(0L)
     var filePath by mutableStateOf("")
-    var textValue by mutableStateOf(TextFieldValue(""))
-        private set
+    
+    val richTextState = RichTextState()
 
     val categories: Flow<List<Category>> = noteDao.getAllCategories()
 
@@ -37,19 +38,17 @@ class NoteEditViewModel(application: Application) : AndroidViewModel(application
             note?.let {
                 titleValue = it.title
                 categoryValue = it.categoryName
-                textValue = TextFieldValue(it.content, TextRange(it.content.length))
+                // 使用 setMarkdown 将数据库中的 Markdown 字符串加载到富文本状态
+                richTextState.setMarkdown(it.content)
                 lastModified = it.lastModified
                 filePath = it.filePath
             }
         }
     }
 
-    fun onTextChange(newValue: TextFieldValue) {
-        textValue = newValue
-    }
-
     fun saveNote() {
-        val content = textValue.text
+        // 使用 toMarkdown 将富文本内容转换为 Markdown 字符串用于保存
+        val content = richTextState.toMarkdown()
         val currentTitle = titleValue
         val currentCategory = categoryValue
         viewModelScope.launch(Dispatchers.IO) {
