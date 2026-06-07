@@ -35,7 +35,9 @@ jobs:
         with:
            gradle-version: '9.4.1' # Quotes required to prevent YAML converting to number
       - name: Build with Gradle 9.4.1
-        run: ./gradlew assembleDebug --stacktrace
+        run: |
+         chmod +x ./gradlew
+         ./gradlew assembleDebug --stacktrace
    
       - uses: actions/upload-artifact@v7
         with:
