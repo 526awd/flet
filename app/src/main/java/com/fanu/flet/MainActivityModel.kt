@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
 import java.io.File
-
+@OptIn(kotlinx.coroutines.ExperimentalCoroutinesApi::class)
 class MainActivityViewModel(application: Application) : AndroidViewModel(application) {
     private val noteDao = AppDatabase.getDatabase(application).noteDao()
     
