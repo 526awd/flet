@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">flet</string>
+    <string name="del">Löschen</string>
+    <string name="edit">Bearbeiten</string>
+    <string name="My_notebook">Meine Notizen</string>
+    <string name="add">Hinzufügen</string>
+    <string name="save">Speichern</string>
+    <string name="saved">Gespeichert</string>
+    <string name="back">Zurück</string>
+    <string name="Modified_Time">Geändert am:</string>
+    <string name="INPUT_TITLE">Bitte Titel eingeben...</string>
+    <string name="EM_NOTE_EDIT">Schreibe eine Notiz...</string>
+    <string name="category">Kategorie</string>
+    <string name="all_notes">Alle Notizen</string>
+    <string name="add_category">Kategorie hinzufügen</string>
+    <string name="new_category">Neue Kategorie</string>
+    <string name="category_name">Kategoriename</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="confirm">Bestätigen</string>
+    <string name="note_properties">Notiz-Eigenschaften</string>
+    <string name="note_title">Titel</string>
+    <string name="word_count">Wortanzahl</string>
+    <string name="file_path">Pfad</string>
+    <string name="close">Schließen</string>
+    <string name="settings">Einstellungen</string>
+    <string name="markdown_support">Markdown-Unterstützung</string>
+    <string name="manual_dark_mode">Manueller Dunkelmodus</string>
+    <string name="follow_system">System folgen</string>
+    <string name="no_notes_all">Noch keine Notizen vorhanden. Klicken Sie auf die Schaltfläche, um eine hinzuzufügen!</string>
+    <string name="no_notes_category">Keine Notizen in dieser Kategorie</string>
+    <string name="uncategorized">Nicht kategorisiert</string>
+    <string name="undo">Rückgängig</string>
+    <string name="deleted_note">Notiz gelöscht: %s</string>
+</resources>

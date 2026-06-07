@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">flet</string>
+    <string name="del">삭제</string>
+    <string name="edit">편집</string>
+    <string name="My_notebook">내 노트</string>
+    <string name="add">추가</string>
+    <string name="save">저장</string>
+    <string name="saved">저장됨</string>
+    <string name="back">뒤로</string>
+    <string name="Modified_Time">수정 시간:</string>
+    <string name="INPUT_TITLE">제목을 입력하세요...</string>
+    <string name="EM_NOTE_EDIT">노트를 작성해 보세요...</string>
+    <string name="category">카테고리</string>
+    <string name="all_notes">모든 노트</string>
+    <string name="add_category">카테고리 추가</string>
+    <string name="new_category">새 카테고리</string>
+    <string name="category_name">카테고리 이름</string>
+    <string name="cancel">취소</string>
+    <string name="confirm">확인</string>
+    <string name="note_properties">노트 정보</string>
+    <string name="note_title">제목</string>
+    <string name="word_count">글자 수</string>
+    <string name="file_path">경로</string>
+    <string name="close">닫기</string>
+    <string name="settings">설정</string>
+    <string name="markdown_support">마크다운 지원</string>
+    <string name="manual_dark_mode">수동 다크 모드</string>
+    <string name="follow_system">시스템 설정 따르기</string>
+    <string name="no_notes_all">아직 노트가 없습니다. 버튼을 눌러 추가해 보세요!</string>
+    <string name="no_notes_category">이 카테고리에 노트가 없습니다</string>
+    <string name="uncategorized">미분류</string>
+    <string name="undo">실행 취소</string>
+    <string name="deleted_note">삭제된 노트: %s</string>
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">flet</string>
+    <string name="del">删除</string>
+    <string name="edit">编辑</string>
+    <string name="My_notebook">我的笔记</string>
+    <string name="add">添加</string>
+    <string name="save">保存</string>
+    <string name="back">返回</string>
+    <string name="Modified_Time">修改时间：</string>
+    <string name="INPUT_TITLE">请输入标题...</string>
+    <string name="EM_NOTE_EDIT">开始写笔记吧...</string>
+    <string name="saved">已保存</string>
+    <string name="category">分类</string>
+    <string name="all_notes">全部笔记</string>
+    <string name="add_category">添加分类</string>
+    <string name="new_category">新建分类</string>
+    <string name="category_name">分类名称</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确定</string>
+    <string name="note_properties">笔记属性</string>
+    <string name="note_title">标题</string>
+    <string name="word_count">字数</string>
+    <string name="file_path">路径</string>
+    <string name="close">关闭</string>
+    <string name="settings">设置</string>
+    <string name="markdown_support">Markdown 支持</string>
+    <string name="manual_dark_mode">手动深色模式</string>
+    <string name="follow_system">恢复跟随系统</string>
+    <string name="no_notes_all">还没有笔记，点击右下角添加一个吧！</string>
+    <string name="no_notes_category">该分类下暂无笔记</string>
+    <string name="uncategorized">未分类</string>
+    <string name="undo">撤销</string>
+    <string name="deleted_note">已删除笔记: %s</string>
+</resources>

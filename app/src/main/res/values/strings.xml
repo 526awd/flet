@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">flet</string>
+    <string name="del">del</string>
+    <string name="edit">edit</string>
+    <string name="My_notebook">My Note</string>
+    <string name="add">add</string>
+    <string name="save">save</string>
+    <string name="saved">Saved</string>
+    <string name="back">back</string>
+    <string name="Modified_Time">Modified Time:</string>
+    <string name="INPUT_TITLE">Please enter a title...</string>
+    <string name="EM_NOTE_EDIT">Let\'s writing a note...</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="category">Category</string>
+    <string name="all_notes">All Notes</string>
+    <string name="add_category">Add Category</string>
+    <string name="new_category">New Category</string>
+    <string name="category_name">Category Name</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="note_properties">Note Properties</string>
+    <string name="note_title">Title</string>
+    <string name="word_count">Word Count</string>
+    <string name="file_path">Path</string>
+    <string name="close">Close</string>
+    <string name="settings">Settings</string>
+    <string name="markdown_support">Markdown Support</string>
+    <string name="manual_dark_mode">Manual Dark Mode</string>
+    <string name="follow_system">Follow System</string>
+    <string name="no_notes_all">No notes yet, click the button to add one!</string>
+    <string name="no_notes_category">No notes in this category</string>
+    <string name="uncategorized">Uncategorized</string>
+    <string name="undo">Undo</string>
+    <string name="deleted_note">Deleted note: %s</string>
+    <string name="title_activity_note_view">NoteViewActivity</string>
+</resources>

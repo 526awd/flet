@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">flet</string>
+    <string name="del">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="My_notebook">My Note</string>
+    <string name="add">add</string>
+    <string name="save">save</string>
+    <string name="saved">Saved</string>
+    <string name="back">back</string>
+    <string name="Modified_Time">Modified Time:</string>
+    <string name="INPUT_TITLE">Please enter a title...</string>
+    <string name="EM_NOTE_EDIT">Let\'s writing a note...</string>
+</resources>
