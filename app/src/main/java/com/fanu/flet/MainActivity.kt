@@ -78,6 +78,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.fanu.flet.ui.theme.FletTheme
+import com.mohamedrejeb.richeditor.model.rememberRichTextState
+import com.mohamedrejeb.richeditor.ui.material3.RichText
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -90,7 +92,8 @@ class MainActivity : ComponentActivity() {
                 val viewModel: MainActivityViewModel by viewModels()
                 LaunchedEffect(Unit) {
                     viewModel.navigationEvent.collect { noteId ->
-                        val intent = Intent(this@MainActivity, NoteEditActivity::class.java).apply {
+                        val destination = if (noteId == -1) NoteEditActivity::class.java else NoteViewActivity::class.java
+                        val intent = Intent(this@MainActivity, destination).apply {
                             putExtra("NOTE_ID", noteId)
                         }
                         startActivity(intent)
@@ -298,17 +301,20 @@ fun Greeting(
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun NoteCard(note: Note, onClick: () -> Unit,onDelete: () -> Unit) {
+fun NoteCard(note: Note, onClick: () -> Unit, onDelete: () -> Unit) {
     var expanded by remember { mutableStateOf(false) }
     var showProperties by remember { mutableStateOf(false) }
-    
+
+    val richTextState = rememberRichTextState()
+    LaunchedEffect(note.content) {
+        richTextState.setMarkdown(note.content)
+    }
+
     Card(
-
-
         modifier = Modifier
             .fillMaxWidth()
-            .clip(CardDefaults.shape) // 1. 裁剪形状，使水波纹不超出圆角
-            .combinedClickable(        // 2. 绑定点击与长按
+            .clip(CardDefaults.shape)
+            .combinedClickable(
                 onClick = onClick,
                 onLongClick = { expanded = true }
             )
@@ -317,14 +323,25 @@ fun NoteCard(note: Note, onClick: () -> Unit,onDelete: () -> Unit) {
             Text(
                 text = note.title,
                 style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.primary
+                color = MaterialTheme.colorScheme.primary,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+
+            RichText(
+                state = richTextState,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                maxLines = 3,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.padding(top = 4.dp)
             )
 
             Text(
                 text = "${stringResource(R.string.category)}: ${note.categoryName}",
                 style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.secondary,
-                modifier = Modifier.padding(top = 4.dp)
+                color = MaterialTheme.colorScheme.secondary.copy(alpha = 0.7f),
+                modifier = Modifier.padding(top = 8.dp)
             )
         }
         DropdownMenu(

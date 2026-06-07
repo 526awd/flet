@@ -112,6 +112,7 @@ dependencies {
     // Jetpack Glance (Widgets)
     implementation("androidx.glance:glance-appwidget:1.1.1")
     implementation("androidx.glance:glance-material3:1.1.1")
-    implementation("com.mohamedrejeb.richeditor:richeditor-compose:1.0.0-rc14")
+    implementation(libs.richeditor.compose)
+    implementation(libs.richeditor.compose.coil)
 
 }
