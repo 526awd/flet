@@ -32,7 +32,6 @@ import com.mohamedrejeb.richeditor.model.rememberRichTextState
 import com.mohamedrejeb.richeditor.ui.material3.RichText
 
 class NoteViewActivity : ComponentActivity() {
-    // 复用 NoteEditViewModel 来加载数据
     private val viewModel: NoteEditViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +41,6 @@ class NoteViewActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             FletTheme {
-                // 首次进入时根据 ID 加载笔记内容
                 LaunchedEffect(Unit) {
                     if (noteId != -1) {
                         viewModel.loadNote(noteId)
@@ -52,10 +50,9 @@ class NoteViewActivity : ComponentActivity() {
                 NoteViewScreen(
                     title = viewModel.titleValue,
                     category = viewModel.categoryValue,
-                    content = viewModel.richTextState.toMarkdown(), 
+                    content = viewModel.richTextState.toMarkdown(),
                     onBackClick = { finish() },
                     onEditClick = {
-                        // 跳转到编辑页面
                         val intent = Intent(this@NoteViewActivity, NoteEditActivity::class.java).apply {
                             putExtra("NOTE_ID", noteId)
                         }
@@ -68,10 +65,6 @@ class NoteViewActivity : ComponentActivity() {
     }
 }
 
-/**
- * 笔记查看屏幕
- * 使用 RichText 组件渲染 Markdown 内容
- */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoteViewScreen(
@@ -103,7 +96,6 @@ fun NoteViewScreen(
                     }
                 },
                 actions = {
-                    // 编辑按钮
                     IconButton(onClick = onEditClick) {
                         Icon(
                             imageVector = Icons.Default.Edit,
@@ -125,7 +117,6 @@ fun NoteViewScreen(
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
-            // 使用 RichText 组件显示渲染后的 Markdown 内容
             RichText(
                 state = richTextState,
                 style = MaterialTheme.typography.bodyLarge

@@ -38,7 +38,6 @@ class NoteEditViewModel(application: Application) : AndroidViewModel(application
             note?.let {
                 titleValue = it.title
                 categoryValue = it.categoryName
-                // 使用 setMarkdown 将数据库中的 Markdown 字符串加载到富文本状态
                 richTextState.setMarkdown(it.content)
                 lastModified = it.lastModified
                 filePath = it.filePath
@@ -47,7 +46,6 @@ class NoteEditViewModel(application: Application) : AndroidViewModel(application
     }
 
     fun saveNote() {
-        // 使用 toMarkdown 将富文本内容转换为 Markdown 字符串用于保存
         val content = richTextState.toMarkdown()
         val currentTitle = titleValue
         val currentCategory = categoryValue

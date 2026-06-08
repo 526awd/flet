@@ -78,8 +78,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.fanu.flet.ui.theme.FletTheme
-import com.mohamedrejeb.richeditor.model.rememberRichTextState
-import com.mohamedrejeb.richeditor.ui.material3.RichText
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -92,9 +90,7 @@ class MainActivity : ComponentActivity() {
                 val viewModel: MainActivityViewModel by viewModels()
                 LaunchedEffect(Unit) {
                     viewModel.navigationEvent.collect { noteId ->
-                        // 根据 ID 判断跳转目标：-1 为新建笔记，否则为查看笔记
-                        val destination = if (noteId == -1) NoteEditActivity::class.java else NoteViewActivity::class.java
-                        val intent = Intent(this@MainActivity, destination).apply {
+                        val intent = Intent(this@MainActivity, NoteEditActivity::class.java).apply {
                             putExtra("NOTE_ID", noteId)
                         }
                         startActivity(intent)
@@ -302,22 +298,17 @@ fun Greeting(
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun NoteCard(note: Note, onClick: () -> Unit, onDelete: () -> Unit) {
+fun NoteCard(note: Note, onClick: () -> Unit,onDelete: () -> Unit) {
     var expanded by remember { mutableStateOf(false) }
     var showProperties by remember { mutableStateOf(false) }
-
-    // 为卡片预览初始化 RichTextState
-    val richTextState = rememberRichTextState()
-    LaunchedEffect(note.content) {
-        // 将笔记的 Markdown 内容解析到状态中用于渲染
-        richTextState.setMarkdown(note.content)
-    }
-
+    
     Card(
+
+
         modifier = Modifier
             .fillMaxWidth()
-            .clip(CardDefaults.shape)
-            .combinedClickable(
+            .clip(CardDefaults.shape) // 1. 裁剪形状，使水波纹不超出圆角
+            .combinedClickable(        // 2. 绑定点击与长按
                 onClick = onClick,
                 onLongClick = { expanded = true }
             )
@@ -326,26 +317,14 @@ fun NoteCard(note: Note, onClick: () -> Unit, onDelete: () -> Unit) {
             Text(
                 text = note.title,
                 style = MaterialTheme.typography.titleMedium,
-                color = MaterialTheme.colorScheme.primary,
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
-
-            // 使用 RichText 显示 Markdown 内容预览
-            RichText(
-                state = richTextState,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = 3, // 限制预览行数
-                overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.padding(top = 4.dp)
+                color = MaterialTheme.colorScheme.primary
             )
 
             Text(
                 text = "${stringResource(R.string.category)}: ${note.categoryName}",
                 style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.secondary.copy(alpha = 0.7f),
-                modifier = Modifier.padding(top = 8.dp)
+                color = MaterialTheme.colorScheme.secondary,
+                modifier = Modifier.padding(top = 4.dp)
             )
         }
         DropdownMenu(

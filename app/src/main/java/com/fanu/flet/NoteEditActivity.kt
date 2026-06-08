@@ -204,8 +204,7 @@ fun NoteEditScreen(
                         destFile.outputStream().use { output -> input.copyTo(output) }
                     }
 
-                    // 使用内部文件的路径，以标准 Markdown 语法插入图片到编辑器
-                    // 格式：![](file://绝对路径)
+                    // 使用内部文件的路径，以 Markdown 语法插入到编辑器
                     val markdownImagePath = "![](file://${destFile.absolutePath})"
                     richTextState.addTextAtIndex(richTextState.selection.min, markdownImagePath)
                 } catch (e: Exception) {
